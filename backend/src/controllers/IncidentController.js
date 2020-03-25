@@ -19,8 +19,26 @@ module.exports = {
     res.json({id})
   },
   async index (req, res){
-    const response = await connection('incidents').select('*');
-    res.json(response)
+    const { page } = req.query;
+
+    const [count] = await connection('incidents').count();
+
+    const incidents = await connection('incidents')
+      .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
+      .limit(5)
+      .offset((page - 1) * 5)
+      .select([
+        'incidents.*', 
+        'ongs.name', 
+        'ongs.email', 
+        'ongs.whatsapp', 
+        'ongs.city', 
+        'ongs.uf' 
+      ]);
+
+    res.header('X-Total-Count', count['count(*)'])
+
+    res.json(incidents)
   }, 
   async detroy (req, res){
     const {id} = req.params
