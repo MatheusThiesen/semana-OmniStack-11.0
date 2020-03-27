@@ -1,5 +1,5 @@
-const crypto = require('crypto')
 const connection = require('../database/connection')
+const genereteUniqueId = require('../utils/genereteUniqueId')
 
 //Arquivo ExampleController
 //Funcoes index, show, store, destroy, update
@@ -14,7 +14,7 @@ module.exports = {
   }, 
   async store(req, res) {
     const {name, email, whatsapp, city, uf} = req.body;
-    const id = crypto.randomBytes(4).toString('HEX');
+    const id = genereteUniqueId();
   
     await connection('ongs').insert({
       id,
