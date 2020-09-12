@@ -87,7 +87,7 @@ npm start
 ```
 
 <p align="center">
-  <img alt="Frontend" src="frontend/src/assets/heroes.png" width="596px" height="574px">
+  <img alt="Frontend" src="web/src/assets/heroes.png" width="596px" height="574px">
 </p>
 
 ---
