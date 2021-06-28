@@ -90,6 +90,3 @@ npm start
   <img alt="Frontend" src="web/src/assets/heroes.png" width="596px" height="574px">
 </p>
 
----
-
-Feito com ♥ by Matheus Thiesen :wave:
